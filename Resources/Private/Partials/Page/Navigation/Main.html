@@ -1,26 +1,43 @@
-<div class="navbar navbar-{themeNavigationstyle} navbar-top{f:if(condition:logoFile,then:' navbar-has-image')}" role="navigation">
-    <div class="container">
-        <div class="navbar-header navbar-header-main">
-            <f:if condition="{logoFile}">
-                <f:then>
-                    <f:link.page pageUid="{rootPage}" class="navbar-brand navbar-brand-image">
-                        <img src="{f:uri.image(src: logoFile)}" height="{logoHeight}" width="{logoWidth}" />
-                    </f:link.page>
-                </f:then>
-                <f:else>
-                    <f:link.page pageUid="{rootPage}" class="navbar-brand">{siteTitle}</f:link.page>
-                </f:else>
-            </f:if>
-            <f:if condition="{f:cObject(typoscriptObjectPath:'lib.navigation.main')}">
-            <button type="button" class="navbar-toggle navbar-toggle-menu" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="glyphicon glyphicon-list"></span>
-                <span class="sr-only">Toggle navigation</span>
-            </button>
-            </f:if>
-            <span class="navbar-header-border-bottom"></span>
-        </div>
-        <div class="navbar-collapse collapse">
-            <f:cObject typoscriptObjectPath="lib.navigation.main" />
+ <div class="container">
+ <div class="navbar-header navbar-header-main">
+               
+                        <div class="row">
+                            <div class="col-md-2">
+                                <a class="navbar-brand" href="index.html">
+                                    <img id="logo-header" src="fileadmin/assets/img/logo1-default.png" alt="Logo">
+                                </a>
+                            </div>
+                            <div class="col-md-2 visible-lg-inline visible-md-inline">
+                                
+                            </div>
+                            <div class="col-md-2 visible-lg-inline visible-md-inline">
+                                <a href="#"><img class="header-banner img-responsive" src="fileadmin/assets/img/BMAS.png" alt="bmas"></a>
+                            </div>
+                            <div class="col-md-2 visible-lg-inline visible-md-inline">    
+                                <a href="#"><img class="header-banner img-responsive" src="fileadmin/assets/img/ESF.png" alt="esf"></a>
+                            </div>
+                            <div class="col-md-2 visible-lg-inline visible-md-inline">    
+                                <a href="#"><img class="header-banner img-responsive" src="fileadmin/assets/img/EU.png" alt="eu"></a>
+                            </div>
+                            <div class="col-md-2 visible-lg-inline visible-md-inline">    
+                                <a href="#"><img class="header-banner img-responsive" src="fileadmin/assets/img/Logo_Integrationsrichtlinie.png" alt="integrationsrichtlinie"></a>                            
+                            </div>
+                          </div>
+                <f:if condition="{f:cObject(typoscriptObjectPath:'lib.navigation.main')}">
+                <button type="button" class="navbar-toggle navbar-toggle-menu" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="glyphicon glyphicon-list"></span>
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                </f:if>
+                <span class="navbar-header-border-bottom"></span>
+            </div>
+            </div>
+<div class="header-v5">
+    <div class="navbar mega-menu navbar-{themeNavigationstyle} navbar-top{f:if(condition:logoFile,then:' navbar-has-image')}" role="navigation">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <f:cObject typoscriptObjectPath="lib.navigation.main" />
+            </div>
         </div>
     </div>
 </div>

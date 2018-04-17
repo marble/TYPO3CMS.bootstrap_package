@@ -128,6 +128,7 @@ lib.navigation.main {
             ACTIFSUB >
             CURIFSUB >
         }
+		3 < .1
     }
 }
 lib.navigation.subnavigation = COA
@@ -296,6 +297,10 @@ page {
             bootstrap_package__special_feature.value = {$page.fluidtemplate.templateRootPath}SpecialFeature.html
             bootstrap_package__special_feature.insertData = 1
 
+			bootstrap_package__mehr_land_in_sicht_start = TEXT
+            bootstrap_package__mehr_land_in_sicht_start.value = {$page.fluidtemplate.templateRootPath}MehrLandInSichtStart.html
+            bootstrap_package__mehr_land_in_sicht_start.insertData = 1
+			
             default = TEXT
             default.value = {$page.fluidtemplate.templateRootPath}Default.html
             default.insertData = 1
@@ -343,7 +348,22 @@ page {
         keywords.override.field = keywords
     }
     includeCSS {
-        theme = {$page.includePath.css}theme.min.css
+        
+		
+		globalcompulsoryone = fileadmin/assets/plugins/bootstrap/css/bootstrap.min.css
+        globalcompulsorytwo = fileadmin/assets/css/style.css
+		header = fileadmin/assets/css/headers/header-v4.css
+		footer = fileadmin/assets/css/footers/footer-v3.css
+		
+    	pluginanimate = fileadmin/assets/plugins/animate.css
+		pluginlineicons = fileadmin/assets/plugins/line-icons/line-icons.css
+    	pluginawesome = fileadmin/assets/plugins/font-awesome/css/font-awesome.min.css
+    	pluginimghover = fileadmin/assets/plugins/image-hover/css/img-hover.css
+
+    	pagejob = fileadmin/assets/css/pages/page_job.css
+
+    	themecolor = fileadmin/assets/css/theme-colors/blue.css
+    	custom = fileadmin/assets/css/custom.css
     }
     includeJSlibs {
         modernizr = {$page.includePath.javascript}Libs/modernizr-2.6.3.min.js
@@ -435,11 +455,9 @@ config {
 
     // Language Settings
     sys_language_uid                    = 0
-    sys_language_overlay                = 1
-    sys_language_mode                   = content_fallback
-    language                            = en
-    locale_all                          = en_US.UTF-8
-    htmlTag_setParams                   = lang="en" dir="ltr" class="no-js"
+    language                            = de
+    locale_all                          = de_DE.UTF-8
+    htmlTag_setParams                   = lang="de" dir="ltr" class="no-js"
 
     // Compression and Concatenation of CSS and JS Files
     compressJs                          = {$config.compressJs}
@@ -447,24 +465,3 @@ config {
     concatenateJs                       = {$config.concatenateJs}
     concatenateCss                      = {$config.concatenateCss}
 }
-
-
-#############################
-#### LANGUAGE CONDITIONS ####
-#############################
-[globalVar = GP:L = 1]
-config {
-    sys_language_uid                    = 1
-    language                            = da
-    locale_all                          = da_DK.UTF-8
-    htmlTag_setParams                   = lang="da" dir="ltr" class="no-js"
-}
-[global]
-[globalVar = GP:L = 2]
-config {
-    sys_language_uid                    = 2
-    language                            = de
-    locale_all                          = de_DE.UTF-8
-    htmlTag_setParams                   = lang="de" dir="ltr" class="no-js"
-}
-[global]

@@ -682,3 +682,54 @@ if (TYPO3_MODE == 'BE') {
     $GLOBALS['TBE_STYLES']['htmlTemplates']['EXT:backend/Resources/Private/Templates/login.html'] = 'EXT:bootstrap_package/Resources/Private/Templates/Backend/Login.html';
     unset($settings);
 }
+
+
+CreateDokType('Video',116,'Icons/fa-video-camera_16.png',FALSE);
+CreateDokType('Shortcut w/video icon',117,'Icons/fa-video-camera_16_sc.png',TRUE);
+
+CreateDokType('Flag',118,'Icons/fa-flag_16.png',FALSE);
+CreateDokType('Shortcut w/flag icon',119,'Icons/fa-flag_16_sc.png',TRUE);
+
+CreateDokType('Comment',120,'Icons/fa-comment_16.png',FALSE);
+CreateDokType('Shortcut w/comment icon',121,'Icons/fa-comment_16_sc.png',TRUE);
+
+CreateDokType('Arrow circle right',122,'Icons/fa-arrow-circle-right_16.png',FALSE);
+CreateDokType('Shortcut w/arrow-circle-right icon',123,'Icons/fa-arrow-circle-right_16_sc.png',TRUE);
+
+CreateDokType('Gavel',124,'Icons/fa-gavel_16.png',FALSE);
+CreateDokType('Shortcut w/gavel icon',125,'Icons/fa-gavel_16_sc.png',TRUE);
+
+CreateDokType('Info',126,'Icons/fa-info_16.png',FALSE);
+CreateDokType('Shortcut w/info icon',127,'Icons/fa-info_16_sc.png',TRUE);
+
+function CreateDokType($DokTypeName,$PageDoktype,$PageIcon,$isShortCut){
+	// Add the new doktype to the list of page types
+	$GLOBALS['PAGES_TYPES'][$PageDoktype] = array(
+			'type' => 'sys',
+			'icon' => $PageIcon,
+			'allowedTables' => '*'
+	);
+	
+	// Add the new doktype to the page type selector
+	$GLOBALS['TCA']['pages']['columns']['doktype']['config']['items'][] = array(
+			$DokTypeName,
+			$PageDoktype,
+			$PageIcon
+	);
+	// Also add the new doktype to the page language overlays type selector (so that translations can inherit the same type)
+	$GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'][] = array(
+			$DokTypeName,
+			$PageDoktype,
+			$PageIcon
+	);
+	// Add the icon for the new doktype
+	\TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon('pages', $PageDoktype, $PageIcon);
+	// Add the new doktype to the list of types available from the new page menu at the top of the page tree
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
+			'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . $PageDoktype . ')'
+	);
+	if ($isShortCut){
+		$GLOBALS['TCA']['pages']['types'][$PageDoktype]['showitem'] = '--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.shortcut;shortcut,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.shortcutpage;shortcutpage,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.title;title, tx_realurl_pathsegment;;137;;, tx_realurl_exclude,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.access,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.visibility;visibility,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.access;access,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.metadata,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.abstract;abstract,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.editorial;editorial,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.appearance,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.layout;layout,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.behaviour,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.links;links,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.language;language,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.miscellaneous;miscellaneous,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.resources,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.media;media,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.storage;storage,					--palette--;LLL:EXT:cms/locallang_tca.xlf:pages.palettes.config;config,				--div--;LLL:EXT:cms/locallang_tca.xlf:pages.tabs.extended, --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, categories';
+	}
+
+}

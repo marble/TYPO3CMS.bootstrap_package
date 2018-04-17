@@ -387,6 +387,147 @@ class BackendLayoutDataProvider implements \TYPO3\CMS\Backend\View\BackendLayout
             ',
             'icon' => 'EXT:bootstrap_package/Resources/Public/Images/BackendLayouts/special_start.gif'
         ),
+		'mehr_land_in_sicht_start' => array(
+            'title' => 'MehrLandInSicht Start',
+            'config' => '
+                backend_layout {
+                    colCount = 12
+                    rowCount = 11
+                    rows {
+                        1 {
+                            columns {
+                                1 {
+                                    name = Großes Bild
+                                    colPos = 1
+                                    colspan = 12
+                                }
+                            }
+                        }
+						2 {
+                            columns {
+                                1 {
+                                    name = Leitsatz
+                                    colPos = 2
+                                    colspan = 12
+                                }
+                            }
+                        }
+                        3 {
+                            columns {
+                                1 {
+                                    name = Topnews
+                                    colPos = 15
+                                    colspan = 12
+                                }
+                            }
+                        }
+                        4 {
+                            columns {
+                                1 {
+                                    name = news-list: Doktorhut Icon
+                                    colPos = 20
+									colspan = 4
+                                }
+                                2 {
+                                    name = news-list: Aktentasche Icon
+                                    colPos = 21
+									colspan = 4
+                                }
+                                3 {
+                                    name = news-list: Richterhammer Icon
+                                    colPos = 22
+									colspan = 4
+                                }
+                            }
+                        }
+                        5 {
+                            columns {
+                                1 {
+                                    name = news-list: Aktivitäten 1
+                                    colPos = 30
+                                    colspan = 3
+                                }
+								2 {
+                                    name = news-list: Aktivitäten 2
+                                    colPos = 31
+                                    colspan = 3
+                                }
+								3 {
+                                    name = news-list: Aktivitäten 3
+                                    colPos = 32
+                                    colspan = 3
+                                }
+								4 {
+                                    name = news-list: Aktivitäten 4
+                                    colPos = 33
+                                    colspan = 3
+                                }
+                            }
+                        }                        
+                        6 {
+                            columns {
+                                1 {
+                                    name = Teilprojekte 1. Reihe
+                                    colPos = 40
+									colspan = 6
+                                }
+								2 {
+                                    name = Teilprojekte 2. Reihe
+                                    colPos = 41
+									colspan = 6 
+                                }
+                            }
+                        }
+						7 {
+                            columns {
+                                1 {
+                                    name = news-list: Filme
+                                    colPos = 50
+									colspan = 12
+                                }
+                            }
+                        }
+						8 {
+                            columns {
+                                1 {
+                                    name = Partner Text
+                                    colPos = 60
+									colspan = 12
+                                }
+	                    	}
+                        }
+						9 {
+                            columns {
+                                1 {
+                                    name = Partner Logos
+                                    colPos = 65
+									colspan = 12
+                                }
+	                    	}
+                        }
+						10 {
+                            columns {
+                                1 {
+                                    name = Adressen im Fuss 1. Reihe
+                                    colPos = 70
+									colspan = 12
+                                }
+	                    	}
+                        }
+						11 {
+                            columns {
+                                1 {
+                                    name = Adressen im Fuss 2. Reihe
+                                    colPos = 75
+									colspan = 12
+                                }
+	                    	}
+                        }
+                    }
+                }
+            ',
+            'icon' => 'EXT:bootstrap_package/Resources/Public/Images/BackendLayouts/special_start.gif'
+        ),
         'special_feature' => array(
             'title' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:backend_layout.special_feature',
             'config' => '

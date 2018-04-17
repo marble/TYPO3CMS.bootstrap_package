@@ -1,0 +1,47 @@
+<f:layout name="Default" />
+<f:section name="Main">
+	<!--=== Job Img ===-->
+    <div class="job-img margin-bottom-30">
+        <div class="job-banner">
+            <h2>Das Netzwerk unterstützt Flüchtlinge ohne gesicherten Aufenthalt in Schleswig-Holstein dabei, Ausbildung und Arbeit zu finden. Ziel ist die dauerhafte Integration von Flüchtlingen.</h2>
+        </div>
+        <div class="job-img-inputs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2 md-margin-bottom-10"></div>
+                    <div class="col-sm-6 md-margin-bottom-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" placeholder="Was suchen Sie?" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-2">
+                        <button type="button" class="btn-u btn-block btn-u-dark">Suchen</button>
+                    </div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=== End Job Img ===-->
+
+    <f:cObject typoscriptObjectPath="lib.dynamicContent" data="3" />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="20" />
+            </div>
+            <div class="col-sm-4">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="21" />
+            </div>
+            <div class="col-sm-4">
+                <f:cObject typoscriptObjectPath="lib.dynamicContent" data="22" />
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <f:cObject typoscriptObjectPath="lib.dynamicContent" data="0" />
+    </div>
+
+</f:section>
