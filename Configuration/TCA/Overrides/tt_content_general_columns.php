@@ -1,22 +1,91 @@
 <?php
 
+/*
+ * This file is part of the package bk2k/bootstrap-package.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
+defined('TYPO3_MODE') || die();
+
 /***************
  * Adjust columns for generic usage
  */
-$GLOBALS['TCA']['tt_content']['columns']['header_position'] = [
-    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.header_position',
+$GLOBALS['TCA']['tt_content']['columns']['background_image'] = [
     'exclude' => true,
+    'displayCond' => 'FIELD:frame_class:!=:none',
+    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.background_image',
+    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+        'background_image',
+        [
+            'appearance' => [
+                'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+            ],
+            'overrideChildTca' => [
+                'types' => [
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_UNKNOWN => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                        'showitem' => '
+                            --palette--;;filePalette
+                        '
+                    ],
+                ],
+            ],
+            'minitems' => 0,
+            'maxitems' => 1,
+        ],
+        $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+    ),
+];
+$GLOBALS['TCA']['tt_content']['columns']['readmore_label'] = [
+    'exclude' => true,
+    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.readmore_label',
+    'config' => [
+        'type' => 'input',
+        'eval' => 'trim',
+        'size' => 50,
+        'max' => 255
+    ]
+];
+$GLOBALS['TCA']['tt_content']['columns']['background_color_class'] = [
+    'exclude' => true,
+    'displayCond' => 'FIELD:frame_class:!=:none',
+    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.background_color_class',
     'config' => [
         'type' => 'select',
         'renderType' => 'selectSingle',
         'items' => [
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.header_position.default',''],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.header_position.center','center'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.header_position.right','right'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.header_position.left','left']
-        ],
-        'default' => ''
-    ]
+            ['none', 'none'],
+            ['primary', 'primary'],
+            ['light', 'light'],
+            ['dark', 'dark']
+        ]
+    ],
 ];
 $GLOBALS['TCA']['tt_content']['columns']['teaser'] = [
     'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.teaser',
@@ -28,40 +97,41 @@ $GLOBALS['TCA']['tt_content']['columns']['teaser'] = [
         'rows' => '3'
     ]
 ];
-$GLOBALS['TCA']['tt_content']['columns']['section_frame'] = [
-    'exclude' => true,
-    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame',
+$GLOBALS['TCA']['tt_content']['columns']['tx_bootstrappackage_carousel_item'] = [
+    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:carousel_item',
     'config' => [
-        'type' => 'select',
-        'renderType' => 'selectSingle',
-        'items' => [
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.default','0'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.invisible','1'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.rulerbefore','5'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.rulerafter','6'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.indentcenter','10'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.indentleft','11'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.indentright','12'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.well','20'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.jumbotron','21'],
-            ['LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.section_frame.none', '66']
+        'type' => 'inline',
+        'foreign_table' => 'tx_bootstrappackage_carousel_item',
+        'foreign_field' => 'tt_content',
+        'appearance' => [
+            'useSortable' => true,
+            'showSynchronizationLink' => true,
+            'showAllLocalizationLink' => true,
+            'showPossibleLocalizationRecords' => true,
+            'showRemovedLocalizationRecords' => false,
+            'expandSingle' => true,
+            'enabledControls' => [
+                'localize' => true,
+            ]
         ],
-        'default' => '0'
+        'behaviour' => [
+            'mode' => 'select',
+            'localizeChildrenAtParentLocalization' => true,
+        ]
     ]
 ];
-$GLOBALS['TCA']['tt_content']['columns']['imageorient']['config']['items'] = [
-    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:imageorient.I.0', 0, 'content-beside-text-img-above-center'],
-    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:imageorient.I.3', 8, 'content-beside-text-img-below-center'],
-    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:imageorient.I.9', 25, 'content-beside-text-img-right'],
-    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:imageorient.I.10', 26, 'content-beside-text-img-left']
-];
-$GLOBALS['TCA']['tt_content']['columns']['assets'] = [
-    'label' => 'LLL:EXT:bootstrap_package/Resources/Private/Language/Backend.xlf:field.assets',
-    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-        'assets',
-        [
-            'foreign_types' => $GLOBALS['TCA']['tt_content']['columns']['image']['config']['foreign_types']
-        ],
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
-    )
-];
+
+/***************
+ * Adjust default fields
+ */
+$GLOBALS['TCA']['tt_content']['columns']['frame_class']['onChange'] = 'reload';
+
+/***************
+ * Add fields to default palettes
+ */
+$GLOBALS['TCA']['tt_content']['palettes']['frames']['showitem'] .= '
+    --linebreak--,
+    background_image,
+    --linebreak--,
+    background_color_class
+';

@@ -1,40 +1,23 @@
 <?php
-namespace BK2K\BootstrapPackage\Service;
 
 /*
- *  The MIT License (MIT)
+ * This file is part of the package bk2k/bootstrap-package.
  *
- *  Copyright (c) 2014 Benjamin Kott, http://www.bk2k.info
- *
- *  Permission is hereby granted, free of charge, to any person obtaining a copy
- *  of this software and associated documentation files (the "Software"), to deal
- *  in the Software without restriction, including without limitation the rights
- *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *  copies of the Software, and to permit persons to whom the Software is
- *  furnished to do so, subject to the following conditions:
- *
- *  The above copyright notice and this permission notice shall be included in
- *  all copies or substantial portions of the Software.
- *
- *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- *  THE SOFTWARE.
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
  */
+
+namespace BK2K\BootstrapPackage\Service;
 
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * @author Benjamin Kott <info@bk2k.info>
+ * InstallService
  */
 class InstallService
 {
-
     /**
      * @var string
      */
@@ -60,16 +43,21 @@ class InstallService
     {
         if ($extension == $this->extKey) {
             if (substr($_SERVER['SERVER_SOFTWARE'], 0, 6) === 'Apache') {
-                $this->createDefaultHtaccessFile();
+                $this->createConfigurationFile('.htaccess');
+            } elseif (substr($_SERVER['SERVER_SOFTWARE'], 0, 13) === 'Microsoft-IIS') {
+                $this->createConfigurationFile('web.config');
             } else {
                 /**
-                 * Add Flashmessage that the system is not running on an apache webserver and the url rewritings must be handled manually
+                 * Add Flashmessage that the system is not running on a supported webserver and the url rewritings must be handled manually
                  */
                 $flashMessage = GeneralUtility::makeInstance(
                     'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-                    'The Bootstrap Package uses RealUrl to generate SEO friendly URLs by default, please take care of the URLs rewriting settings for your environment yourself.'
-                    . 'You can also deactivate RealUrl by changing your TypoScript setup to "config.tx_realurl_enable = 0".',
-                    'TYPO3 is not running on an Apache-Webserver',
+                    'The Bootstrap Package suggests to use RealUrl to generate SEO friendly URLs, please take care of '
+                    . 'the URLs rewriting settings for your environment yourself. You can also deactivate RealUrl by '
+                    . 'changing your TypoScript setup to "config.tx_realurl_enable = 0". You also need to take care of '
+                    . 'securing configuration files. Example Configurations for Apache and Microsoft IIS can be found '
+                    . 'in "typo3conf/ext/bootstrap_package/Configuration/Server/".',
+                    'TYPO3 is not running on an Apache or Microsoft-IIS Webserver',
                     FlashMessage::WARNING,
                     true
                 );
@@ -80,39 +68,39 @@ class InstallService
     }
 
     /**
-     * Creates .htaccess file inside the root directory
+     * Creates webserver configuration file inside the root directory
      *
      * @return void
      */
-    public function createDefaultHtaccessFile()
+    private function createConfigurationFile($filename)
     {
-        $htaccessFile = GeneralUtility::getFileAbsFileName('.htaccess');
-        if (file_exists($htaccessFile)) {
+        $absFilename = GeneralUtility::getFileAbsFileName($filename);
+        if (file_exists($absFilename)) {
             /**
-             * Add Flashmessage that there is already an .htaccess file and we are not going to override this.
+             * Add Flashmessage that there is already an configuration file and we are not going to override this.
              */
             $flashMessage = GeneralUtility::makeInstance(
                 'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-                'There is already an Apache .htaccess file in the root directory, please make sure that the url rewritings are set properly.'
-                . 'An example configuration is located at: "typo3conf/ext/bootstrap_package/Configuration/Apache/.htaccess"',
-                'Apache .htaccess file already exists',
+                'There is already an ' . $filename . ' configuration file in the root directory, '
+                . 'please make sure that configuration files are protected and the url rewritings are set properly. '
+                . 'An example configuration is located at: "typo3conf/ext/bootstrap_package/Configuration/Server/_' . $filename . '"',
+                'Webserver coniguration file "' . $filename . '" already exists',
                 FlashMessage::NOTICE,
                 true
             );
             $this->addFlashMessage($flashMessage);
             return;
         }
-        $htaccessContent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey) . '/Configuration/Apache/.htaccess');
-        GeneralUtility::writeFile($htaccessFile, $htaccessContent, true);
+        $filecontent = GeneralUtility::getUrl(ExtensionManagementUtility::extPath($this->extKey) . '/Configuration/Server/_' . $filename);
+        GeneralUtility::writeFile($absFilename, $filecontent, true);
 
         /**
-         * Add Flashmessage that the example htaccess file was placed in the root directory
+         * Add Flashmessage that the example configuration file was placed in the root directory
          */
         $flashMessage = GeneralUtility::makeInstance(
             'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
-            'For RealURL and optimization purposes an example .htaccess file was placed in your root directory.'
-            . ' Please check if the RewriteBase correctly set for your environment. ',
-            'Apache example .htaccess was placed in the root directory.',
+            'For securing configuration files and optimization purposes an example ' . $filename . ' file was placed in your root directory.',
+            'Webserver coniguration file "' . $filename . '" was placed in the root directory.',
             FlashMessage::OK,
             true
         );

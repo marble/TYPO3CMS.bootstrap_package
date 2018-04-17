@@ -4,30 +4,22 @@ language: php
 branches:
   only:
     - master
-    - BP_7-0
-    - BP_6-2
-
-php:
-  - 5.5
-  - 5.6
-  - 7.0
-
-env:
-  - TYPO3_VERSION=^7.6.0
-  - TYPO3_VERSION=dev-master
 
 matrix:
-  allow_failures:
-    - env: TYPO3_VERSION=dev-master
-  exclude:
-    - php: 5.5
-      env: TYPO3_VERSION=dev-master
-    - php: 5.6
-      env: TYPO3_VERSION=dev-master
+  fast_finish: true
+  include:
+    - php: 7.0
+      env: TYPO3_VERSION=^8.7
+    - php: 7.1
+      env: TYPO3_VERSION=^8.7
+    - php: 7.2
+      env: TYPO3_VERSION=^8.7
 
 sudo: false
 
 addons:
+  ssh_known_hosts:
+    - bootstrap-package.com
   apt:
     packages:
       - parallel
@@ -40,10 +32,9 @@ before_install:
   - phpenv config-rm xdebug.ini
   - composer self-update
   - composer --version
-  - if [ "$GITHUB_COMPOSER_AUTH" ]; then composer config -g github-oauth.github.com $GITHUB_COMPOSER_AUTH; fi
 
 before_script:
-  - composer require typo3/cms=$TYPO3_VERSION
+  - composer require typo3/cms:${TYPO3_VERSION}
   - export TYPO3_PATH_WEB="$PWD/.build/web"
 
 script:
@@ -53,12 +44,35 @@ script:
     find . -name \*.php ! -path "./.build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
   - >
     echo;
-    echo "Running phpcs";
-    .build/bin/phpcs --standard=PSR2 -n Classes/
+    echo "Running php-cs-fixer";
+    .build/bin/php-cs-fixer --diff --dry-run -v fix
   - >
-    echo "Installing npm modules";
+    echo "Installing node_modules";
     pushd Build;
-    npm install && npm install grunt-cli;
+    yarn install && npm install grunt-cli;
     echo "Executing grunt";
     node_modules/.bin/grunt;
     popd
+
+after_success:
+  - >
+    if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+      curl -sSL https://raw.githubusercontent.com/alrra/travis-after-all/1.4.4/lib/travis-after-all.js | node
+      if [ $? -eq 0 ]; then
+        openssl aes-256-cbc -K $encrypted_068845507e9d_key -iv $encrypted_068845507e9d_iv -in Build/deploy_rsa.enc -out /tmp/deploy_rsa -d;
+        eval "$(ssh-agent -s)";
+        chmod 600 /tmp/deploy_rsa;
+        ssh-add /tmp/deploy_rsa;
+        curl -LO https://deployer.org/deployer.phar;
+        sudo mv deployer.phar /usr/local/bin/dep;
+        sudo chmod +x /usr/local/bin/dep;
+        dep self-update;
+        dep --file="./Build/deploy.php" deploy;
+      fi;
+    fi;
+
+notifications:
+  slack:
+    secure: fj3lIrSaDe0EzBu+Twng/3vz/Bn2bGtKhEA6hG2vBg1g+/n54l7uhzXjRWgMaI4gfwuBmDcJvPnG2EFweBuSJgQgxcXzCvScZ1Z4Xu+gAeCCCeuVJHsWE34erE86a5MeIAsDZhH2UG/MTOlpUqqdFCD59z5XA+E52LiyTp7QMi0=
+    on_success: change
+    on_failure: always

@@ -3,7 +3,7 @@
     //
     // Smooth Sroll
     //
-    $('a[href*="#"]:not([href="#"])').click(function() {
+    $('a[href*="#"]:not([href$="#"])').click(function() {
         if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'')
             && location.hostname === this.hostname
             && $(this).data('toggle') === undefined
@@ -25,6 +25,9 @@
     //
     // Scroll to top
     //
+    $('.scroll-top').on('click', function() {
+        $(this).blur();
+    });
     $(window).on('scroll', function () {
         if ($(this).scrollTop() > 300) {
             $('.scroll-top').addClass('scroll-top-visible');

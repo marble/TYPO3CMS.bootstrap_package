@@ -1,4 +1,11 @@
 # .scrutinizer.yml
+build:
+    environment:
+        php: 7.0
+    dependencies:
+        before:
+            - 'composer require typo3/cms="^8.7"'
+
 checks:
     php:
         code_rating: true
@@ -33,7 +40,7 @@ tools:
         enabled: true
 
     php_analyzer:
-        enabled: true
+        enabled: false
 
     php_code_coverage:
         enabled: false
@@ -48,3 +55,5 @@ tools:
 filter:
     dependency_paths:
         - Contrib/
+    excluded_paths:
+        - ".build/"

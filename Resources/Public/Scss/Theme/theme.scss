@@ -1,0 +1,46 @@
+//
+// Variables
+//
+@import "variables";
+
+//
+// Import needed Bootstrap Files
+//
+@import "../../Contrib/bootstrap4/scss/bootstrap";
+
+//
+// Bootstrap Package Theme
+//
+@import "backendlayouts";
+@import "section";
+@import "footer";
+@import "frame";
+@import "card";
+@import "address";
+@import "buttons";
+@import "body";
+@import "text";
+@import "media";
+@import "blockquote";
+@import "navbar";
+@import "breadcrumb";
+@import "lazyload";
+@import "gallery";
+@import "figure";
+@import "carousel";
+@import "form";
+@import "textpic";
+@import "texticon";
+@import "accordion";
+@import "icongroup";
+@import "uploads";
+@import "thumbnail-menu";
+@import "link";
+@import "socialmedia";
+@import "timeline";
+@import "misc";
+
+//
+// Plugins
+//
+@import "photoswipe";

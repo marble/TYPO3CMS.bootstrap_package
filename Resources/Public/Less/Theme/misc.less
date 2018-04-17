@@ -1,29 +1,4 @@
 //
-// Vertical Alignment
-// --------------------------------------------------
-.indent {
-    @media (min-width: @screen-sm) {
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-    @media (min-width: @screen-md) {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    @media (min-width: @screen-lg) {
-        margin-left: 15%;
-        margin-right: 15%;
-    }
-}
-.indent-left {
-    margin-left: 33%;
-}
-.indent-right {
-    margin-right: 33%;
-}
-
-
-//
 // Scrolltop
 //
 .scroll-top {
@@ -32,8 +7,8 @@
     z-index: @zindex-navbar;
     background-color: @gray;
     color: #fff;
-    bottom: @grid-gutter-width;
-    right: @grid-gutter-width;
+    bottom: (@grid-gutter-width / 2);
+    right: (@grid-gutter-width / 2);
     position: fixed;
     opacity: 0;
     width: 3em;
@@ -73,6 +48,13 @@
     }
 }
 
+
+//
+// Audio
+// --------------------------------------------------
+audio {
+    width: 100%;
+}
 
 
 //
@@ -114,40 +96,6 @@
 
 
 //
-// Lazyload Images
-// --------------------------------------------------
-img.lazyload {
-    opacity: 0.3;
-    .transition(opacity .3s ease-in 0s);
-}
-
-
-//
-// Buttons from RTE
-// --------------------------------------------------
-.btn-default {
-    .btn();
-    .btn-default();
-}
-.btn-primary {
-    .btn();
-    .btn-primary();
-}
-.btn-success {
-    .btn();
-    .btn-success();
-}
-.btn-warning {
-    .btn();
-    .btn-warning();
-}
-.btn-danger {
-    .btn();
-    .btn-danger();
-}
-
-
-//
 // Misc
 // --------------------------------------------------
 .panel-group {
@@ -156,6 +104,6 @@ img.lazyload {
 .caret {
     margin-left: 5px;
 }
-.caption {
-    color: @gray-light;
+iframe {
+    border: 0;
 }

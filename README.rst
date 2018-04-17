@@ -2,18 +2,21 @@
 Bootstrap Package
 ==================================================
 
+.. image:: Documentation/Images/Screens/typo3-frontend.png?raw=true
+   :alt: Bootstrap Package
+
 Bootstrap Package delivers a full configured frontend
 theme for TYPO3, based on the Bootstrap CSS Framework.
 
 The goal of this package is to give an advanced example of how modern templating
 in TYPO3 CMS can be handled nicely without depending on third party extensions.
-Bootstrap Package is built for >= 7.6 and comes with a fully configurable Frontend
-via TypoScript. This includes the TypoScript Constant Editor.
+Bootstrap Package comes with a fully configurable Frontend via TypoScript. This
+includes the TypoScript Constant Editor.
 
 Minimal Dependencies
 ====================
 
-* TYPO3 CMS 7.6 or greater
+* TYPO3 CMS 8.7 or greater
 
 Quick Install Guide
 ===================
@@ -21,10 +24,12 @@ Quick Install Guide
 Disable default content rendering extensions
 --------------------------------------------
 
-Both TYPO3 core rendering definitions are confliction each other in minor things,
-to avoid this conflicts the bootstrap_package takes full control of the content
-rendering and supports both cTypes from csc and fsc. To get the best results,
-please disable following extensions.
+You do not need to have Fluid Styled Content or CSS Styled Content installed, we
+have currently marked both extensions as conflicting to avoid missconfiguration.
+
+If you really know what you are doing, it is save to use core content rendering
+definitions alongside with the Bootstrap Package. But please be aware that we are
+adding more content elements that are not supported from those extensions.
 
 * css_styled_content
 * fluid_styled_content
@@ -48,6 +53,7 @@ Options
 ~~~~~~~
 
 * Clear Constants and Setup by checking the boxes
+* Clear the  predefined TypoScript setup from the textbox if any
 * Use this Template as Root-Level Template by checking the box
 
 Includes
@@ -88,7 +94,9 @@ with your changes.
 We check the source code according to the TYPO3 Coding Guidelines. To reformat
 the code automatically, you can use `php-cs-fixer` as follows:
 
-`php-cs-fixer fix --config-file .php_cs`
+.. code-block::
+
+   php-cs-fixer fix
 
 Bug reporting
 -------------

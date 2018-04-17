@@ -1,42 +1,210 @@
 //
-// Frames
-// --------------------------------------------------
-.frame {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    @media (min-width: @screen-sm) {
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
+// Frame Container
+//
+.frame-container {
+    .container-fixed();
+    @media (min-width: @screen-sm-min) {
+        max-width: @container-sm;
     }
-    @media (min-width: @screen-md) {
+    @media (min-width: @screen-md-min) {
+        max-width: @container-md;
+    }
+    @media (min-width: @screen-lg-min) {
+        max-width: @container-lg;
+    }
+}
+.container {
+    .frame-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+//
+// Frame
+//
+.frame {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    @media (min-width: @screen-sm) {
         padding-top: 2em;
         padding-bottom: 2em;
     }
-    &.rulerbefore {
-        border-top: 1px solid @page-header-border-color;
-        margin-top: 2em;
+    @media (min-width: @screen-md) {
+        padding-top: 3em;
+        padding-bottom: 3em;
     }
-    &.rulerafter {
-        border-bottom: 1px solid @page-header-border-color;
-        margin-bottom: 2em;
-    }
-    &.well {
-        *:first-child {
-            padding-top: 0px;
-        }
-        *:last-child {
-            padding-bottom: 0px;
-        }
+    @media (min-width: @screen-lg) {
+        padding-top: 3.5em;
+        padding-bottom: 3.5em;
     }
     > *:last-child {
         margin-bottom: 0;
     }
 }
-.frame-small {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    @media (min-width: @screen-sm) {
-        padding-top: 1em;
-        padding-bottom: 1em;
+.frame-inner {
+    > *:last-child {
+        margin-bottom: 0;
     }
+}
+
+//
+// Frame Styles
+//
+.frame-ruler-before {
+    border-top: 1px solid rgba(0, 0, 0, .125);
+    margin-top: 2em;
+}
+.frame-ruler-after {
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    margin-bottom: 2em;
+}
+.frame-indent {
+    .frame-inner {
+        @media (min-width: @screen-sm) {
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        @media (min-width: @screen-md) {
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        @media (min-width: @screen-lg) {
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+    }
+}
+.frame-indent-left {
+    .frame-inner {
+        @media (min-width: @screen-sm) {
+            margin-left: 11%;
+        }
+        @media (min-width: @screen-md) {
+            margin-left: 22%;
+        }
+        @media (min-width: @screen-lg) {
+            margin-left: 33%;
+        }
+    }
+}
+.frame-indent-right {
+    .frame-inner {
+        @media (min-width: @screen-sm) {
+            margin-right: 11%;
+        }
+        @media (min-width: @screen-md) {
+            margin-right: 22%;
+        }
+        @media (min-width: @screen-lg) {
+            margin-right: 33%;
+        }
+    }
+}
+
+//
+// Background
+// --------------------------------------------------
+.frame-has-backgroundimage {
+    background-position: center;
+    background-size: cover;
+}
+.container {
+    .frame-has-backgroundimage {
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        @media (min-width: @screen-sm) {
+            padding-left: 2em;
+            padding-right: 2em;
+        }
+        @media (min-width: @screen-md) {
+            padding-left: 3em;
+            padding-right: 3em;
+        }
+        @media (min-width: @screen-lg) {
+            padding-left: 3.5em;
+            padding-right: 3.5em;
+        }
+    }
+}
+.frame-collapsible {
+    margin-top: -1.5em;
+    @media (min-width: @screen-sm) {
+        margin-top: -2em;
+    }
+    @media (min-width: @screen-md) {
+        margin-top: -3em;
+    }
+    @media (min-width: @screen-lg) {
+        margin-top: -3.5em;
+    }
+}
+.make-frame-spacing(@name) {
+    .@{name}.frame-space-after-none:not(.frame-ruler-after) + .@{name}.frame-space-before-none:not(.frame-ruler-before):not(.frame-has-backgroundimage) {
+        &:extend(.frame-collapsible);
+    }
+}
+.make-frame-spacing(frame-background-none);
+.make-frame-background(@name, @background, @color, @link-color, @link-color-hover) {
+    .@{name} {
+        &:extend(.frame-has-backgroundimage all);
+        color: @color;
+        background-color: @background;
+        a:not(.btn) {
+            color: @link-color;
+            &:focus,
+            &:hover {
+                color: @link-color-hover;
+            }
+        }
+    }
+    .make-frame-spacing(@name);
+}
+.make-frame-background(frame-background-primary, @frame-primary-bg, @frame-primary-color, @frame-primary-link-color, @frame-primary-link-hover-color);
+.make-frame-background(frame-background-light, @frame-light-bg, @frame-light-color, @frame-light-link-color, @frame-light-link-hover-color);
+.make-frame-background(frame-background-dark, @frame-dark-bg, @frame-dark-color, @frame-dark-link-color, @frame-dark-link-hover-color);
+
+
+//
+// Space Before
+// --------------------------------------------------
+.frame-space-before-none {
+    margin-top: 0;
+}
+.frame-space-before-extra-small {
+    margin-top: 1em;
+}
+.frame-space-before-small {
+    margin-top: 1.5em;
+}
+.frame-space-before-medium {
+    margin-top: 2em;
+}
+.frame-space-before-large {
+    margin-top: 2.5em;
+}
+.frame-space-before-extra-large {
+    margin-top: 3em;
+}
+
+//
+// Space After
+// --------------------------------------------------
+.frame-space-after-none {
+    margin-bottom: 0;
+}
+.frame-space-after-extra-small {
+    margin-bottom: 1em;
+}
+.frame-space-after-small {
+    margin-bottom: 1.5em;
+}
+.frame-space-after-medium {
+    margin-bottom: 2em;
+}
+.frame-space-after-large {
+    margin-bottom: 2.5em;
+}
+.frame-space-after-extra-large {
+    margin-bottom: 3em;
 }

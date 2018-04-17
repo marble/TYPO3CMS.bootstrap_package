@@ -9,39 +9,42 @@
                 <source>Bootstrap Package</source>
             </trans-unit>
 
+            <trans-unit id="pages.nav_icon">
+                <source>Navigation Icon</source>
+            </trans-unit>
+
             <trans-unit id="backend_layout.default">
                 <source>Default</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_clean">
-                <source>Default, Clean</source>
+            <trans-unit id="backend_layout.simple">
+                <source>Simple</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_2_columns">
-                <source>Default, 2 Columns</source>
+            <trans-unit id="backend_layout.2_columns">
+                <source>2 Columns</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_2_columns_25_75">
-                <source>Default, 2 Columns 25/75</source>
+            <trans-unit id="backend_layout.2_columns_25_75">
+                <source>2 Columns 25/75</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_2_columns_50_50">
-                <source>Default, 2 Columns 50/50</source>
+            <trans-unit id="backend_layout.2_columns_50_50">
+                <source>2 Columns 50/50</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_2_columns_offset_right">
-                <source>Default, 2 Columns, Offset Right</source>
+            <trans-unit id="backend_layout.2_columns_offset_right">
+                <source>2 Columns, Offset Right</source>
             </trans-unit>
-
-            <trans-unit id="backend_layout.default_3_columns">
-                <source>Default, 3 Columns</source>
+            <trans-unit id="backend_layout.3_columns">
+                <source>3 Columns</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_subnavigation_right">
-                <source>Default, Subnavigation Right</source>
+            <trans-unit id="backend_layout.subnavigation_right">
+                <source>Subnavigation Right</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_subnavigation_right_2_columns">
-                <source>Default, Subnavigation Right and 2 Columns</source>
+            <trans-unit id="backend_layout.subnavigation_right_2_columns">
+                <source>Subnavigation Right and 2 Columns</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_subnavigation_left">
-                <source>Default, Subnavigation Left</source>
+            <trans-unit id="backend_layout.subnavigation_left">
+                <source>Subnavigation Left</source>
             </trans-unit>
-            <trans-unit id="backend_layout.default_subnavigation_left_2_columns">
-                <source>Default, Subnavigation Left and 2 Columns</source>
+            <trans-unit id="backend_layout.subnavigation_left_2_columns">
+                <source>Subnavigation Left and 2 Columns</source>
             </trans-unit>
             <trans-unit id="backend_layout.special_start">
                 <source>Special Startpage</source>
@@ -122,17 +125,43 @@
                 <source>Footer: Right</source>
             </trans-unit>
 
-            <trans-unit id="menu.thumbnail">
-                <source>Thumbnail Menu</source>
+            <trans-unit id="menu.card_dir">
+                <source>Cards of subpages</source>
             </trans-unit>
-            <trans-unit id="menu.thumbnail.description">
-                <source>Insert menu to display pages as thumbnail list</source>
+            <trans-unit id="menu.card_dir.description">
+                <source>Insert menu to display subpages as cards</source>
+            </trans-unit>
+            <trans-unit id="menu.card_list">
+                <source>Cards</source>
+            </trans-unit>
+            <trans-unit id="menu.card_list.description">
+                <source>Insert menu to display selected pages as cards</source>
+            </trans-unit>
+
+            <trans-unit id="menu.thumbnail_dir">
+                <source>Thumbnails of subpages</source>
             </trans-unit>
             <trans-unit id="menu.thumbnail_dir.description">
-                <source>Display subpages as thumbnails</source>
+                <source>Insert menu to display subpages as thumbnail</source>
+            </trans-unit>
+            <trans-unit id="menu.thumbnail_list">
+                <source>Thumbnails</source>
             </trans-unit>
             <trans-unit id="menu.thumbnail_list.description">
-                <source>Display selected pages as thumbnail</source>
+                <source>Insert menu to display selected pages as thumbnail</source>
+            </trans-unit>
+
+            <trans-unit id="content_group.interactive">
+                <source>Interactive</source>
+            </trans-unit>
+            <trans-unit id="content_group.media">
+                <source>Media</source>
+            </trans-unit>
+            <trans-unit id="content_group.text">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="content_group.social_media">
+                <source>Social Media</source>
             </trans-unit>
 
             <trans-unit id="content_element.media">
@@ -140,6 +169,13 @@
             </trans-unit>
             <trans-unit id="content_element.media.description">
                 <source>Any number of youtube and vimeo videos in columns and rows with a caption.</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.audio">
+                <source>Audio</source>
+            </trans-unit>
+            <trans-unit id="content_element.audio.description">
+                <source>Insert Audio files</source>
             </trans-unit>
 
             <trans-unit id="content_element.panel">
@@ -153,6 +189,20 @@
                 <source>Carousel</source>
             </trans-unit>
             <trans-unit id="content_element.carousel.description">
+                <source>Insert Carouselelement with different contents (header / text with image / pure HTML)</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.carousel_small">
+                <source>Carousel Small</source>
+            </trans-unit>
+            <trans-unit id="content_element.carousel_small.description">
+                <source>Insert Carouselelement with different contents (header / text with image / pure HTML)</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.carousel_fullscreen">
+                <source>Carousel Fullscreen</source>
+            </trans-unit>
+            <trans-unit id="content_element.carousel_fullscreen.description">
                 <source>Insert Carouselelement with different contents (header / text with image / pure HTML)</source>
             </trans-unit>
 
@@ -191,6 +241,13 @@
                 <source>Insert several Tabelement(s) with headline and text</source>
             </trans-unit>
 
+            <trans-unit id="content_element.icon_group">
+                <source>Icon Group</source>
+            </trans-unit>
+            <trans-unit id="content_element.icon_group.description">
+                <source>Insert a element with several icons</source>
+            </trans-unit>
+
             <trans-unit id="content_element.listgroup">
                 <source>List Group</source>
             </trans-unit>
@@ -207,6 +264,37 @@
 
             <trans-unit id="content_element.textmedia">
                 <source>Text &amp; Media</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.quote">
+                <source>Quote</source>
+            </trans-unit>
+            <trans-unit id="content_element.quote.description">
+                <source>Insert Quotation</source>
+            </trans-unit>
+
+            <trans-unit id="quote.text">
+                <source>Quote Text</source>
+            </trans-unit>
+            <trans-unit id="quote.link">
+                <source>Quote Link</source>
+            </trans-unit>
+            <trans-unit id="quote.source">
+                <source>Quote Source</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.social_links">
+                <source>Social Links</source>
+            </trans-unit>
+            <trans-unit id="content_element.social_links.description">
+                <source>Insert a element to display configured social media channels</source>
+            </trans-unit>
+
+            <trans-unit id="content_element.timeline">
+                <source>Timeline</source>
+            </trans-unit>
+            <trans-unit id="content_element.timeline.description">
+                <source>Insert a element to display a timeline</source>
             </trans-unit>
 
             <trans-unit id="carousel.options">
@@ -233,6 +321,12 @@
             <trans-unit id="carousel.wrap.description">
                 <source>Start the Carousel from the beginning once it has arrived at the end.</source>
             </trans-unit>
+            <trans-unit id="carousel.show_nav_title">
+                <source>Show Navigation Title</source>
+            </trans-unit>
+            <trans-unit id="carousel.show_nav_title.description">
+                <source>Show the navigation title of the records instead of the bubbles.</source>
+            </trans-unit>
 
             <trans-unit id="carousel_item">
                 <source>Carousel Item</source>
@@ -249,11 +343,23 @@
             <trans-unit id="carousel_item.header_layout">
                 <source>Header Layout</source>
             </trans-unit>
+            <trans-unit id="carousel_item.header_class">
+                <source>Header Class</source>
+            </trans-unit>
             <trans-unit id="carousel_item.subheader">
                 <source>Subheader</source>
             </trans-unit>
             <trans-unit id="carousel_item.subheader_layout">
                 <source>Subheader Layout</source>
+            </trans-unit>
+            <trans-unit id="carousel_item.subheader_class">
+                <source>Subheader Class</source>
+            </trans-unit>
+            <trans-unit id="carousel_item.nav_title">
+                <source>Navigation Title</source>
+            </trans-unit>
+            <trans-unit id="carousel_item.button_text">
+                <source>Button Text</source>
             </trans-unit>
             <trans-unit id="carousel_item.bodytext">
                 <source>Text</source>
@@ -274,6 +380,12 @@
             <trans-unit id="carousel_item.item_type.header">
                 <source>Header</source>
             </trans-unit>
+            <trans-unit id="carousel_item.item_type.calltoaction">
+                <source>Call to Action</source>
+            </trans-unit>
+            <trans-unit id="carousel_item.item_type.image">
+                <source>Image</source>
+            </trans-unit>
             <trans-unit id="carousel_item.item_type.textandimage">
                 <source>Text and Image</source>
             </trans-unit>
@@ -282,6 +394,13 @@
             </trans-unit>
             <trans-unit id="carousel_item.item_type.html">
                 <source>HTML</source>
+            </trans-unit>
+
+            <trans-unit id="accordion.options">
+                <source>Accordion Options</source>
+            </trans-unit>
+            <trans-unit id="accordion.default_element">
+                <source>Default Element</source>
             </trans-unit>
 
             <trans-unit id="accordion_item">
@@ -319,7 +438,6 @@
                 <source>Default Tab</source>
             </trans-unit>
 
-
             <trans-unit id="tab_item">
                 <source>Tab Item</source>
             </trans-unit>
@@ -351,23 +469,59 @@
                 <source>Right</source>
             </trans-unit>
 
-            <trans-unit id="contextualalternatives.default">
-                <source>Default</source>
+            <trans-unit id="timeline.options">
+                <source>Timeline Options</source>
             </trans-unit>
-            <trans-unit id="contextualalternatives.primary">
-                <source>Primary</source>
+            <trans-unit id="timeline.sorting">
+                <source>Sorting</source>
             </trans-unit>
-            <trans-unit id="contextualalternatives.success">
-                <source>Success</source>
+            <trans-unit id="timeline.sorting.asc">
+                <source>Ascending</source>
             </trans-unit>
-            <trans-unit id="contextualalternatives.info">
-                <source>Info</source>
+            <trans-unit id="timeline.sorting.desc">
+                <source>Descending</source>
             </trans-unit>
-            <trans-unit id="contextualalternatives.warning">
-                <source>Warning</source>
+
+            <trans-unit id="timeline_item">
+                <source>Timeline Item</source>
             </trans-unit>
-            <trans-unit id="contextualalternatives.danger">
-                <source>Danger</source>
+            <trans-unit id="timeline_item.tt_content">
+                <source>Timeline</source>
+            </trans-unit>
+            <trans-unit id="timeline_item.date">
+                <source>Date</source>
+            </trans-unit>
+            <trans-unit id="timeline_item.header">
+                <source>Header</source>
+            </trans-unit>
+            <trans-unit id="timeline_item.bodytext">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="timeline_item.icon_file">
+                <source>Icon File</source>
+            </trans-unit>
+            <trans-unit id="timeline_item.image">
+                <source>Image</source>
+            </trans-unit>
+
+            <trans-unit id="icon_group_item">
+                <source>Icon Group Item</source>
+            </trans-unit>
+            <trans-unit id="icon_group_item.tt_content">
+                <source>Icon Group</source>
+            </trans-unit>
+            <trans-unit id="icon_group_item.header">
+                <source>Header</source>
+            </trans-unit>
+            <trans-unit id="icon_group_item.subheader">
+                <source>Subheader</source>
+            </trans-unit>
+            <trans-unit id="icon_group_item.icon_file">
+                <source>Icon File</source>
+            </trans-unit>
+
+            <trans-unit id="field.panel_class">
+                <source>Panel Class</source>
             </trans-unit>
 
             <trans-unit id="external_media">
@@ -402,10 +556,19 @@
                 <source>Background</source>
             </trans-unit>
 
+            <trans-unit id="field.background_image">
+                <source>Background Image</source>
+            </trans-unit>
+            <trans-unit id="field.background_color_class">
+                <source>Background Color</source>
+            </trans-unit>
             <trans-unit id="field.teaser">
                 <source>Teaser</source>
             </trans-unit>
 
+            <trans-unit id="option.default">
+                <source>Default</source>
+            </trans-unit>
             <trans-unit id="option.none">
                 <source>None</source>
             </trans-unit>
@@ -430,6 +593,12 @@
             <trans-unit id="option.circle">
                 <source>Circle</source>
             </trans-unit>
+            <trans-unit id="option.extrasmall">
+                <source>Extra Small</source>
+            </trans-unit>
+            <trans-unit id="option.small">
+                <source>Small</source>
+            </trans-unit>
             <trans-unit id="option.medium">
                 <source>Medium</source>
             </trans-unit>
@@ -438,6 +607,21 @@
             </trans-unit>
             <trans-unit id="option.awesome">
                 <source>Awesome</source>
+            </trans-unit>
+            <trans-unit id="option.primary">
+                <source>Primary</source>
+            </trans-unit>
+            <trans-unit id="option.success">
+                <source>Success</source>
+            </trans-unit>
+            <trans-unit id="option.info">
+                <source>Info</source>
+            </trans-unit>
+            <trans-unit id="option.warning">
+                <source>Warning</source>
+            </trans-unit>
+            <trans-unit id="option.danger">
+                <source>Danger</source>
             </trans-unit>
 
             <trans-unit id="tablelayout.default">
@@ -459,19 +643,6 @@
                 <source>Condensed table</source>
             </trans-unit>
 
-            <trans-unit id="listlayout.unordered">
-                <source>Unordered</source>
-            </trans-unit>
-            <trans-unit id="listlayout.ordered">
-                <source>Ordered</source>
-            </trans-unit>
-            <trans-unit id="listlayout.unstyled">
-                <source>Unstyled</source>
-            </trans-unit>
-            <trans-unit id="listlayout.inline">
-                <source>Inline</source>
-            </trans-unit>
-
             <trans-unit id="uploadslayout.default">
                 <source>Default</source>
             </trans-unit>
@@ -480,66 +651,6 @@
             </trans-unit>
             <trans-unit id="uploadslayout.iconsandpreview">
                 <source>Display Icons and Preview Images</source>
-            </trans-unit>
-
-            <trans-unit id="carousellayout.normal">
-                <source>Normal</source>
-            </trans-unit>
-            <trans-unit id="carousellayout.small">
-                <source>Small</source>
-            </trans-unit>
-            <trans-unit id="carousellayout.fullscreen">
-                <source>Fullscreen</source>
-            </trans-unit>
-
-            <trans-unit id="field.section_frame">
-                <source>Frame</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.default">
-                <source>Default</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.invisible">
-                <source>Invisible</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.rulerbefore">
-                <source>Ruler before</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.rulerafter">
-                <source>Ruler after</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.indentcenter">
-                <source>Indent center</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.indentleft">
-                <source>Indent left</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.indentright">
-                <source>Indent right</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.well">
-                <source>Well</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.jumbotron">
-                <source>Jumbotron</source>
-            </trans-unit>
-            <trans-unit id="field.section_frame.none">
-                <source>None</source>
-            </trans-unit>
-
-            <trans-unit id="field.header_position">
-                <source>Alignment</source>
-            </trans-unit>
-            <trans-unit id="field.header_position.default">
-                <source>Default</source>
-            </trans-unit>
-            <trans-unit id="field.header_position.center">
-                <source>Center</source>
-            </trans-unit>
-            <trans-unit id="field.header_position.left">
-                <source>Left</source>
-            </trans-unit>
-            <trans-unit id="field.header_position.right">
-                <source>Right</source>
             </trans-unit>
 
             <trans-unit id="field.assets">
@@ -566,6 +677,10 @@
 
             <trans-unit id="palette.alignment">
                 <source>Alignment</source>
+            </trans-unit>
+
+            <trans-unit id="field.readmore_label">
+                <source>Read More Label</source>
             </trans-unit>
 
         </body>
